@@ -1,10 +1,56 @@
 import React from 'react';
+import Tesseract from 'tesseract.js';
+import { useToasts } from 'react-toast-notifications';
 
 const Upload: React.FC = () => {
 	const [showModal, setShowModal] = React.useState(false);
 	const [file, setFile] = React.useState<File | null>(null);
+	const [loading, setLoading] = React.useState(false);
 
-	console.log(file);
+	const { addToast } = useToasts();
+
+	const handleSubmit = async () => {
+		if (!file) {
+			addToast(`Please select file`, {
+				appearance: 'error',
+				autoDismiss: true,
+			});
+			return;
+		}
+
+		console.log(file.type.includes('image'));
+
+		if (!file.type.includes('image') && !file.type.includes('pdf')) {
+			addToast(`Invalid file type`, {
+				appearance: 'error',
+				autoDismiss: true,
+			});
+			return;
+		}
+
+		setLoading(true);
+
+		const worker = Tesseract.createWorker({
+			// logger: function (m) {
+			// 	console.log(m);
+			// },
+			/*
+			 * As there is no indexedDB in earlier version
+			 * of Edge, here we disable cache.
+			 */
+			cacheMethod: 'none',
+		});
+		await worker.load();
+		await worker.loadLanguage('eng');
+		await worker.initialize('eng');
+		const data = await worker.recognize(file);
+		await worker.terminate();
+		console.log({ res: data.data.text });
+		setLoading(false);
+		setFile(null);
+		setShowModal(false);
+	};
+
 	return (
 		<>
 			<button
@@ -84,12 +130,12 @@ const Upload: React.FC = () => {
 										Close
 									</button>
 									<button
-										className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:bg-gray-600"
+										className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:opacity-50"
 										type="button"
-										disabled={!file}
-										onClick={() => setShowModal(false)}
+										disabled={!file || loading}
+										onClick={handleSubmit}
 									>
-										Save Changes
+										{loading ? `Processing file...` : `Save Changes`}
 									</button>
 								</div>
 							</div>
