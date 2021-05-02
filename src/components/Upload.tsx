@@ -30,25 +30,53 @@ const Upload: React.FC = () => {
 
 		setLoading(true);
 
-		const worker = Tesseract.createWorker({
-			// logger: function (m) {
-			// 	console.log(m);
-			// },
-			/*
-			 * As there is no indexedDB in earlier version
-			 * of Edge, here we disable cache.
-			 */
-			cacheMethod: 'none',
-		});
-		await worker.load();
-		await worker.loadLanguage('eng');
-		await worker.initialize('eng');
-		const data = await worker.recognize(file);
-		await worker.terminate();
-		console.log({ res: data.data.text });
-		setLoading(false);
-		setFile(null);
-		setShowModal(false);
+		try {
+			const worker = Tesseract.createWorker({
+				// logger: function (m) {
+				// 	console.log(m);
+				// },
+				/*
+				 * As there is no indexedDB in earlier version
+				 * of Edge, here we disable cache.
+				 */
+				cacheMethod: 'none',
+			});
+			await worker.load();
+			await worker.loadLanguage('eng');
+			await worker.initialize('eng');
+			const data = await worker.recognize(file);
+			await worker.terminate();
+
+			const header = `Basic UGdxdE0zMFNqZTpiYjU0MmNjYS1hYjc5LTExZWItYmNiYy0wMjQyYWMxMzAwMDI=`;
+			const url = `https://algolia-image-search.netlify.app/.netlify/functions/index_ocr_data`;
+			const res = await fetch(url, {
+				body: JSON.stringify({
+					body: data.data.text,
+					fileName: file.name,
+					fileType: file.type,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: header,
+				},
+				method: 'POST',
+			});
+
+			const json = await res.json();
+			addToast(json.message, {
+				appearance: 'info',
+				autoDismiss: true,
+			});
+			setLoading(false);
+			setFile(null);
+			setShowModal(false);
+		} catch (err) {
+			setLoading(false);
+			addToast(`Something went wrong please try again`, {
+				appearance: 'error',
+				autoDismiss: true,
+			});
+		}
 	};
 
 	return (

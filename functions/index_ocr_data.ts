@@ -2,6 +2,19 @@ import { Handler } from '@netlify/functions';
 import algoliasearch from 'algoliasearch';
 
 const handler: Handler = async (event, context) => {
+	if (event.httpMethod === 'OPTIONS') {
+		const headers = {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Headers': 'Content-Type',
+			'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+		};
+		return {
+			statusCode: 200, // <-- Must be 200 otherwise pre-flight call fails
+			headers,
+			body: 'This was a preflight call!',
+		};
+	}
+
 	const client = algoliasearch(
 		process.env.ALGOLIA_USER_ID,
 		process.env.ALGOLIA_KEY,
