@@ -44,7 +44,7 @@ A web application that lets you search on the images with text. It performs OCR 
 
 - `yarn build`
 
-### Test?
+### Test
 
 - `yarn test`
 
