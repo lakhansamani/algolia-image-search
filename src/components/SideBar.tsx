@@ -7,7 +7,7 @@ const SideBar: React.FC = () => {
 			<div className="text-sm font-bold flex items-center">
 				<Logo height={25} width={25} />{' '}
 				<div className="ml-3">
-					<span className="font-light">Image</span>Search
+					<span className="font-light">Image|PDF</span>Search
 				</div>
 			</div>
 		</div>

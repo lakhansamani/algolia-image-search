@@ -2,7 +2,7 @@ import React from 'react';
 import Tesseract from 'tesseract.js';
 import { useToasts } from 'react-toast-notifications';
 
-const Upload: React.FC = () => {
+const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 	const [showModal, setShowModal] = React.useState(false);
 	const [file, setFile] = React.useState<File | null>(null);
 	const [loading, setLoading] = React.useState(false);
@@ -76,6 +76,10 @@ const Upload: React.FC = () => {
 				autoDismiss: true,
 			});
 			handleClose();
+
+			if (onSubmit) {
+				onSubmit();
+			}
 		} catch (err) {
 			handleClose();
 			addToast(`Something went wrong please try again.\n err.message`, {
@@ -110,14 +114,12 @@ const Upload: React.FC = () => {
 									<h3 className="text-xl font-semibold">
 										Upload and process file
 									</h3>
-									<button
-										className="p-1 ml-auto bg-transparent border-0 text-gray-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+									<span
+										className=" text-gray-800 h-6 w-6 text-2xl cursor-pointer"
 										onClick={handleClose}
 									>
-										<span className="bg-transparent text-gray-900 opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-											×
-										</span>
-									</button>
+										&times;
+									</span>
 								</div>
 								{/*body*/}
 
