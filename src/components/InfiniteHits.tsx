@@ -19,7 +19,7 @@ const InfiniteHits: React.FC<{
 			<button
 				disabled={!hasPrevious}
 				onClick={refinePrevious}
-				className="bg-blue-600 p-2 rounded uppercase text-white text-sm hover:bg-blue-400 ml-5"
+				className="bg-green-500 px-4 py-2 rounded uppercase text-white text-sm hover:bg-green-400 ml-5"
 			>
 				Show previous
 			</button>
@@ -31,7 +31,7 @@ const InfiniteHits: React.FC<{
 			<button
 				disabled={!hasMore}
 				onClick={refineNext}
-				className="bg-blue-600 p-2 rounded uppercase text-white text-sm hover:bg-blue-400 ml-5"
+				className="bg-green-500 px-4 py-2 rounded uppercase text-white text-sm hover:bg-green-400 ml-5"
 			>
 				Show more
 			</button>

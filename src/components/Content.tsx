@@ -4,6 +4,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox } from 'react-instantsearch-dom';
 import InfiniteHits from './InfiniteHits';
 import Logo from './Logo';
+import Filters from './Filters';
 
 const searchClient = algoliasearch(
 	'59NBO13TUB',
@@ -28,7 +29,10 @@ const Content: React.FC = () => {
 								placeholder: 'Search image content / image name',
 							}}
 						/>
-						<Upload />
+						<div className="flex">
+							<Filters />
+							<Upload />
+						</div>
 					</div>
 					<div
 						className="flex justify-center mt-20"
