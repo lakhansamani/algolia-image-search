@@ -24,7 +24,7 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 			return;
 		}
 
-		if (!file.type.includes('image') && !file.type.includes('pdf')) {
+		if (!file.type.includes('image')) {
 			addToast(`Invalid file type`, {
 				appearance: 'error',
 				autoDismiss: true,
@@ -142,7 +142,7 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 															type="file"
 															className="h-full w-full opacity-0"
 															name="file input"
-															accept="image/*,.pdf"
+															accept="image/*"
 															onChange={(e) => {
 																if (e.target.files && e.target.files.length) {
 																	setFile(e.target.files[0]);
@@ -168,7 +168,7 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 									<button
 										className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:opacity-50"
 										type="button"
-										disabled={!file || loading}
+										disabled={loading}
 										onClick={handleSubmit}
 									>
 										{loading ? `Processing file...` : `Save Changes`}

@@ -1,16 +1,46 @@
 import React from 'react';
 import Upload from './Upload';
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import ResultItem from './ResultItem';
+import Logo from './Logo';
+
+const searchClient = algoliasearch(
+	'59NBO13TUB',
+	'2964db31941ed2fe1a07efbca335dd21',
+);
 
 const Content: React.FC = () => {
 	return (
-		<div className="flex justify-between w-full p-3">
-			<input
-				type="text"
-				placeholder="Search..."
-				className="focus:outline-none focus:ring focus:border-blue-300 p-2 border border-gray-300 rounded w-full mr-3"
-			/>
-			<Upload />
-		</div>
+		<>
+			<div className="overflow-y-auto overflow-x-hidden">
+				<InstantSearch indexName="ocr_search" searchClient={searchClient}>
+					<div className="flex justify-between w-full p-3 fixed bg-indigo-500 z-50 shadow-md">
+						<div className="text-sm font-bold flex items-center text-white">
+							<Logo height={25} width={25} />{' '}
+							<div className="ml-3">
+								<span className="font-light">Image</span>Search
+							</div>
+						</div>
+						<SearchBox
+							autoFocus
+							translations={{
+								placeholder: 'Search image content / image name',
+							}}
+						/>
+						<Upload />
+					</div>
+					<div
+						className="flex justify-center mt-20"
+						style={{ height: 'calc(100vh - 30px)' }}
+					>
+						<div style={{ flex: '0.7' }}>
+							<Hits hitComponent={ResultItem} />
+						</div>
+					</div>
+				</InstantSearch>
+			</div>
+		</>
 	);
 };
 

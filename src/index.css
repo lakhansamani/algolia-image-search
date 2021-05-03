@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ais-Hits-list,
+.ais-InfiniteHits-list,
+.ais-InfiniteResults-list,
+.ais-Results-list {
+	flex-direction: column !important;
+	width: 100% !important;
+	margin: 0 !important;
+}
+
+.ais-Hits-item,
+.ais-InfiniteHits-item,
+.ais-InfiniteResults-item,
+.ais-Results-item {
+	margin: 0 !important;
+	border: 0 !important;
+	width: 100% !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+
+.ais-SearchBox-input {
+	padding: 0.6rem 1.7rem !important;
+	padding-right: 2rem;
+}
