@@ -14,7 +14,7 @@ const InfiniteHits: React.FC<{
 	hasMore: boolean;
 	refineNext: () => void;
 }> = ({ hits, hasPrevious, refinePrevious, hasMore, refineNext }) => (
-	<div className="mb-24 mt-5 w-full lg:max-w-6xl">
+	<div className="mb-20 w-full lg:max-w-6xl">
 		{hasPrevious && (
 			<div className="flex justify-center">
 				<button

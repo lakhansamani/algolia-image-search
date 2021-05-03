@@ -1,6 +1,10 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch-dom';
+import {
+	InstantSearch,
+	CurrentRefinements,
+	Stats,
+} from 'react-instantsearch-dom';
 import InfiniteHits from './InfiniteHits';
 import NavBar from './NavBar';
 
@@ -33,7 +37,11 @@ const Container: React.FC = () => {
 					refresh={shouldRefresh}
 				>
 					<NavBar setShouldRefresh={setShouldRefresh} />
-					<div className="flex justify-center mt-20">
+					<div className="flex justify-center mt-24 flex-col items-center">
+						<div className="flex">
+							<CurrentRefinements clearsQuery />
+							<Stats />
+						</div>
 						<InfiniteHits />
 					</div>
 				</InstantSearch>
