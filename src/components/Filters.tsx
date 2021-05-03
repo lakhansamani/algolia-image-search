@@ -1,7 +1,7 @@
 import React from 'react';
 import { RefinementList } from 'react-instantsearch-dom';
 
-const Filters: React.FC = ({}) => {
+const Filters: React.FC = () => {
 	const [showModal, setShowModal] = React.useState(false);
 
 	const handleClose = () => {

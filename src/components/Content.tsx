@@ -33,12 +33,15 @@ const Content: React.FC = () => {
 					refresh={shouldRefresh}
 				>
 					<div className="flex justify-between w-full p-3 fixed bg-indigo-500 z-50 shadow-md">
-						<div className="text-sm font-bold flex items-center text-white">
+						<a
+							href="/"
+							className="text-lg cursor-pointer font-bold flex items-center text-white"
+						>
 							<Logo height={25} width={25} />{' '}
-							<div className="ml-3">
+							<span className="ml-3">
 								<span className="font-light">Image</span>Search
-							</div>
-						</div>
+							</span>
+						</a>
 						<SearchBox
 							autoFocus
 							translations={{
