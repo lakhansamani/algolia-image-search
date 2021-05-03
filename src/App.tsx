@@ -5,7 +5,7 @@ import Content from './components/Content';
 const App: React.FC = () => {
 	return (
 		<ToastProvider>
-			<div className="h-screen overflow-hidden w-screen flex">
+			<div className="h-screen w-screen flex">
 				<Content />
 			</div>
 		</ToastProvider>

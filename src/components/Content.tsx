@@ -1,12 +1,8 @@
 import React from 'react';
 import Upload from './Upload';
 import algoliasearch from 'algoliasearch/lite';
-import {
-	InstantSearch,
-	SearchBox,
-	InfiniteHits,
-} from 'react-instantsearch-dom';
-import ResultItem from './ResultItem';
+import { InstantSearch, SearchBox } from 'react-instantsearch-dom';
+import InfiniteHits from './InfiniteHits';
 import Logo from './Logo';
 
 const searchClient = algoliasearch(
@@ -39,7 +35,7 @@ const Content: React.FC = () => {
 						style={{ height: 'calc(100vh - 30px)' }}
 					>
 						<div style={{ flex: '0.7' }}>
-							<InfiniteHits hitComponent={ResultItem} />
+							<InfiniteHits />
 						</div>
 					</div>
 				</InstantSearch>
