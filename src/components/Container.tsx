@@ -7,6 +7,7 @@ import {
 } from 'react-instantsearch-dom';
 import InfiniteHits from './InfiniteHits';
 import NavBar from './NavBar';
+import LoadingIndicator from './LoadingIndicator';
 
 const searchClient = algoliasearch(
 	'59NBO13TUB',
@@ -42,7 +43,11 @@ const Container: React.FC = () => {
 							<CurrentRefinements clearsQuery />
 							<Stats />
 						</div>
-						<InfiniteHits />
+						<LoadingIndicator>
+							{({ loading }: { loading: boolean }) => (
+								<InfiniteHits loading={loading} />
+							)}
+						</LoadingIndicator>
 					</div>
 				</InstantSearch>
 			</div>
