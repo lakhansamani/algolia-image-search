@@ -12,10 +12,26 @@ const searchClient = algoliasearch(
 );
 
 const Content: React.FC = () => {
+	const [shouldRefresh, setShouldRefresh] = React.useState(false);
+	React.useEffect(() => {
+		const refresh = setTimeout(() => {
+			if (shouldRefresh) {
+				console.log('boom algolia cached refreshed');
+
+				setShouldRefresh(false);
+			}
+		}, 1000);
+
+		return () => clearTimeout(refresh);
+	}, [shouldRefresh]);
 	return (
 		<>
 			<div className="overflow-y-auto overflow-x-hidden w-screen h-screen">
-				<InstantSearch indexName="ocr_search" searchClient={searchClient}>
+				<InstantSearch
+					indexName="ocr_search"
+					searchClient={searchClient}
+					refresh={shouldRefresh}
+				>
 					<div className="flex justify-between w-full p-3 fixed bg-indigo-500 z-50 shadow-md">
 						<div className="text-sm font-bold flex items-center text-white">
 							<Logo height={25} width={25} />{' '}
@@ -31,7 +47,11 @@ const Content: React.FC = () => {
 						/>
 						<div className="flex">
 							<Filters />
-							<Upload />
+							<Upload
+								onSubmit={() => {
+									setShouldRefresh(true);
+								}}
+							/>
 						</div>
 					</div>
 					<div
