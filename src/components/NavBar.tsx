@@ -13,7 +13,9 @@ const NavBar: React.FC<{ setShouldRefresh: (arg: boolean) => void }> = ({
 				href="/"
 				className="text-lg cursor-pointer font-bold flex items-center text-white"
 			>
-				<Logo height={25} width={25} />{' '}
+				<span className="-mt-1">
+					<Logo height={25} width={25} />
+				</span>
 				<span className="ml-2">
 					<span className="font-light">Image</span>Search
 				</span>
