@@ -1,7 +1,11 @@
 import React from 'react';
 import Upload from './Upload';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import {
+	InstantSearch,
+	SearchBox,
+	InfiniteHits,
+} from 'react-instantsearch-dom';
 import ResultItem from './ResultItem';
 import Logo from './Logo';
 
@@ -13,7 +17,7 @@ const searchClient = algoliasearch(
 const Content: React.FC = () => {
 	return (
 		<>
-			<div className="overflow-y-auto overflow-x-hidden">
+			<div className="overflow-y-auto overflow-x-hidden w-screen h-screen">
 				<InstantSearch indexName="ocr_search" searchClient={searchClient}>
 					<div className="flex justify-between w-full p-3 fixed bg-indigo-500 z-50 shadow-md">
 						<div className="text-sm font-bold flex items-center text-white">
@@ -35,7 +39,7 @@ const Content: React.FC = () => {
 						style={{ height: 'calc(100vh - 30px)' }}
 					>
 						<div style={{ flex: '0.7' }}>
-							<Hits hitComponent={ResultItem} />
+							<InfiniteHits hitComponent={ResultItem} />
 						</div>
 					</div>
 				</InstantSearch>
