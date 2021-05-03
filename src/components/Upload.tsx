@@ -51,6 +51,14 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 			const data = await worker.recognize(file);
 			await worker.terminate();
 
+			if (!data.data.text.trim()) {
+				addToast(`Image does not include text`, {
+					appearance: 'error',
+					autoDismiss: true,
+				});
+				return;
+			}
+
 			const header = `Basic UGdxdE0zMFNqZTpiYjU0MmNjYS1hYjc5LTExZWItYmNiYy0wMjQyYWMxMzAwMDI=`;
 			const url = `https://algolia-image-search.netlify.app/.netlify/functions/index_ocr_data`;
 			const res = await fetch(url, {
