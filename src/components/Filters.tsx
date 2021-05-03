@@ -1,5 +1,6 @@
 import React from 'react';
 import { RefinementList } from 'react-instantsearch-dom';
+import FilterIcon from './Icons/FilterIcon';
 
 const Filters: React.FC = () => {
 	const [showModal, setShowModal] = React.useState(false);
@@ -11,11 +12,14 @@ const Filters: React.FC = () => {
 	return (
 		<>
 			<button
-				className="bg-red-500 text-white hover:bg-red-400  uppercase text-xs px-6 py-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150 mr-3"
+				className="fixed bottom-2 left-2 rounded-full bg-blue-500 p-5 flex items-center hover:bg-blue-400 hover:shadow-sm text-white uppercase font-bold lg:static lg:rounded lg:p-3 lg:mx-1"
 				type="button"
 				onClick={() => setShowModal(true)}
 			>
-				Apply Filters
+				<span>
+					<FilterIcon height={20} width={20} />
+				</span>
+				<span className="hidden lg:block lg:ml-2">Apply Filters</span>
 			</button>
 			<div className={showModal ? 'block' : 'hidden'}>
 				<div

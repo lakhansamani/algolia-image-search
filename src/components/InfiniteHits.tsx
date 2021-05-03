@@ -14,27 +14,31 @@ const InfiniteHits: React.FC<{
 	hasMore: boolean;
 	refineNext: () => void;
 }> = ({ hits, hasPrevious, refinePrevious, hasMore, refineNext }) => (
-	<div className="mb-24">
+	<div className="mb-24 mt-5 w-full lg:max-w-6xl">
 		{hasPrevious && (
-			<button
-				disabled={!hasPrevious}
-				onClick={refinePrevious}
-				className="bg-green-500 px-4 py-2 rounded uppercase text-white text-sm hover:bg-green-400 ml-5"
-			>
-				Show previous
-			</button>
+			<div className="flex justify-center">
+				<button
+					disabled={!hasPrevious}
+					onClick={refinePrevious}
+					className="uppercase text-blue-500 text-sm font-extrabold"
+				>
+					Show previous
+				</button>
+			</div>
 		)}
 		{hits.map((hit) => (
 			<ResultItem hit={hit} key={hit.objectID} />
 		))}
 		{hasMore && (
-			<button
-				disabled={!hasMore}
-				onClick={refineNext}
-				className="bg-green-500 px-4 py-2 rounded uppercase text-white text-sm hover:bg-green-400 ml-5"
-			>
-				Show more
-			</button>
+			<div className="flex justify-center">
+				<button
+					disabled={!hasMore}
+					onClick={refineNext}
+					className="bg-blue-500 px-4 py-2 rounded uppercase text-white hover:bg-blue-400"
+				>
+					Show more
+				</button>
+			</div>
 		)}
 	</div>
 );

@@ -3,8 +3,8 @@ import { Highlight } from 'react-instantsearch-dom';
 
 const ResultItem: React.FC<{ hit: any }> = ({ hit }) => {
 	return (
-		<article className="bg-white p-5 rounded m-5 border-gray-200 border-2 resultItem hover:shadow-md">
-			<div className="flex justify-between items-center">
+		<article className="bg-white p-5 rounded-lg m-5 border-gray-200 border-2 resultItem">
+			<div className="flex justify-between items-center flex-wrap">
 				<h1 className="text-gray-800 text-bold text-2xl uppercase">
 					<Highlight attribute="fileName" hit={hit} />
 				</h1>

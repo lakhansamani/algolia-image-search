@@ -1,6 +1,7 @@
 import React from 'react';
 import Tesseract from 'tesseract.js';
 import { useToasts } from 'react-toast-notifications';
+import UploadIcon from './Icons/UploadIcon';
 
 const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 	const [showModal, setShowModal] = React.useState(false);
@@ -100,11 +101,14 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 	return (
 		<>
 			<button
-				className="bg-white hover:bg-gray-200 uppercase text-gray-800 text-xs px-6 py-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+				className="fixed bottom-2 right-2 rounded-full bg-green-500 p-5 flex items-center hover:bg-green-400 hover:shadow-sm text-white uppercase font-bold lg:rounded"
 				type="button"
 				onClick={() => setShowModal(true)}
 			>
-				Upload File
+				<span>
+					<UploadIcon height={20} width={20} />
+				</span>
+				<span className="hidden lg:block lg:ml-2">Upload file</span>
 			</button>
 			{showModal ? (
 				<>
