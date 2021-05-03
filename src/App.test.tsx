@@ -24,7 +24,7 @@ test('should search lazy_fox.png', async () => {
 	await new Promise((r) => setTimeout(r, 2000));
 	// get result items
 	const resultItems = container.getElementsByClassName('resultItem').length;
-	// we cannot compare the exact number of results, because if someone else uploads a file this result could change but can make sure that number of results after search are less than number of results before search
+	// we cannot compare the exact number of results, because if someone else uploads a file this result could change. But can make sure that number of results after search are less than number of results before search
 	expect(resultItems).toBeLessThan(resultItemsInitially);
 	unmountComponentAtNode(container);
 });
