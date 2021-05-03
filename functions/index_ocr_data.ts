@@ -2,12 +2,13 @@ import { Handler } from '@netlify/functions';
 import algoliasearch from 'algoliasearch';
 
 const handler: Handler = async (event, context) => {
+	const headers = {
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': '*',
+		'Access-Control-Allow-Methods': 'POST',
+	};
+
 	if (event.httpMethod === 'OPTIONS') {
-		const headers = {
-			'Access-Control-Allow-Origin': '*',
-			'Access-Control-Allow-Headers': '*',
-			'Access-Control-Allow-Methods': 'POST',
-		};
 		return {
 			statusCode: 200, // <-- Must be 200 otherwise pre-flight call fails
 			headers,
@@ -18,6 +19,7 @@ const handler: Handler = async (event, context) => {
 	if (event.httpMethod !== 'POST') {
 		return {
 			statusCode: 405,
+			headers,
 			body: JSON.stringify({
 				message: `${event.httpMethod} Method not allowed`,
 			}),
@@ -42,6 +44,7 @@ const handler: Handler = async (event, context) => {
 		) {
 			return {
 				statusCode: 401,
+				headers,
 				body: JSON.stringify({
 					message: 'Unauthorized',
 				}),
@@ -53,6 +56,7 @@ const handler: Handler = async (event, context) => {
 		if (!data.text || !data.fileName || !data.fileType) {
 			return {
 				statusCode: 400,
+				headers,
 				body: JSON.stringify({
 					message: 'Invalid data',
 				}),
@@ -69,6 +73,7 @@ const handler: Handler = async (event, context) => {
 
 		return {
 			statusCode: 200,
+			headers,
 			body: JSON.stringify({
 				message: 'Data indexed successfully',
 				...res,

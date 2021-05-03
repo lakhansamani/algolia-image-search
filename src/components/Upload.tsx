@@ -55,7 +55,7 @@ const Upload: React.FC = () => {
 			const url = `https://algolia-image-search.netlify.app/.netlify/functions/index_ocr_data`;
 			const res = await fetch(url, {
 				body: JSON.stringify({
-					body: data.data.text,
+					text: data.data.text,
 					fileName: file.name,
 					fileType: file.type,
 				}),
