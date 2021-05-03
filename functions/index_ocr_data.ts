@@ -66,7 +66,6 @@ const handler: Handler = async (event, context) => {
 		const res = await index.saveObject(
 			{
 				...data,
-				preview: data.text.slice(0, 200),
 				createdAt: parseInt((new Date().getTime() / 1000).toString(), 10),
 			},
 			{ autoGenerateObjectIDIfNotExist: true },
