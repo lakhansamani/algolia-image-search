@@ -9,6 +9,12 @@ const Upload: React.FC = () => {
 
 	const { addToast } = useToasts();
 
+	const handleClose = () => {
+		setLoading(false);
+		setFile(null);
+		setShowModal(false);
+	};
+
 	const handleSubmit = async () => {
 		if (!file) {
 			addToast(`Please select file`, {
@@ -17,8 +23,6 @@ const Upload: React.FC = () => {
 			});
 			return;
 		}
-
-		console.log(file.type.includes('image'));
 
 		if (!file.type.includes('image') && !file.type.includes('pdf')) {
 			addToast(`Invalid file type`, {
@@ -71,13 +75,11 @@ const Upload: React.FC = () => {
 				appearance: 'info',
 				autoDismiss: true,
 			});
-			setLoading(false);
-			setFile(null);
-			setShowModal(false);
+			handleClose();
 		} catch (err) {
-			setLoading(false);
-			addToast(`Something went wrong please try again`, {
-				appearance: err.message,
+			handleClose();
+			addToast(`Something went wrong please try again.\n err.message`, {
+				appearance: 'error',
 				autoDismiss: true,
 			});
 		}
@@ -110,7 +112,7 @@ const Upload: React.FC = () => {
 									</h3>
 									<button
 										className="p-1 ml-auto bg-transparent border-0 text-gray-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-										onClick={() => setShowModal(false)}
+										onClick={handleClose}
 									>
 										<span className="bg-transparent text-gray-900 opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
 											×
@@ -157,7 +159,7 @@ const Upload: React.FC = () => {
 									<button
 										className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 										type="button"
-										onClick={() => setShowModal(false)}
+										onClick={handleClose}
 									>
 										Close
 									</button>
