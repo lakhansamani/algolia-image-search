@@ -36,12 +36,12 @@ const handler: Handler = async (event, context) => {
 		const username = decoded[0];
 		const password = decoded[1];
 
-		console.log(`username: ${username}`);
-		console.log(`password: ${password}`);
+		console.log(`username: ${username} ${process.env.USERNAME}`);
+		console.log(`password: ${password} ${process.env.PASSWORD}`);
 
 		if (
 			username !== process.env.USERNAME ||
-			password !== process.env.password
+			password !== process.env.PASSWORD
 		) {
 			return {
 				statusCode: 401,
