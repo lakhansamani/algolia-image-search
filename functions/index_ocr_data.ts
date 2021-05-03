@@ -36,9 +36,6 @@ const handler: Handler = async (event, context) => {
 		const username = decoded[0];
 		const password = decoded[1];
 
-		console.log(`username: ${username} ${process.env.USERNAME}`);
-		console.log(`password: ${password} ${process.env.PASSWORD}`);
-
 		if (
 			username !== process.env.USERNAME ||
 			password !== process.env.PASSWORD
@@ -62,10 +59,10 @@ const handler: Handler = async (event, context) => {
 			};
 		}
 
-		await index.saveObjects(
+		await index.saveObject(
 			{
 				...data,
-				createdAt: new Date(),
+				createdAt: new Date().getTime() / 1000,
 			},
 			{ autoGenerateObjectIDIfNotExist: true },
 		);

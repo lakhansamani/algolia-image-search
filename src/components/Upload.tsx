@@ -62,7 +62,11 @@ const Upload: React.FC = () => {
 				method: 'POST',
 			});
 
-			const json = await res.json();
+			const json: Record<string, string> = await res.json();
+			if (res.status !== 200) {
+				throw new Error(json.message);
+			}
+
 			addToast(json.message, {
 				appearance: 'info',
 				autoDismiss: true,
@@ -73,7 +77,7 @@ const Upload: React.FC = () => {
 		} catch (err) {
 			setLoading(false);
 			addToast(`Something went wrong please try again`, {
-				appearance: 'error',
+				appearance: err.message,
 				autoDismiss: true,
 			});
 		}
