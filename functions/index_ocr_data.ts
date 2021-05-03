@@ -59,8 +59,6 @@ const handler: Handler = async (event, context) => {
 			};
 		}
 
-		console.log(JSON.stringify(data));
-
 		const res = await index.saveObject(
 			{
 				...data,
@@ -68,8 +66,6 @@ const handler: Handler = async (event, context) => {
 			},
 			{ autoGenerateObjectIDIfNotExist: true },
 		);
-
-    console.log(JSON.stringify(res))
 
 		return {
 			statusCode: 200,
