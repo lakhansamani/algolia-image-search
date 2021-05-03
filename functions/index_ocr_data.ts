@@ -59,18 +59,23 @@ const handler: Handler = async (event, context) => {
 			};
 		}
 
-		await index.saveObject(
+		console.log(JSON.stringify(data));
+
+		const res = await index.saveObject(
 			{
 				...data,
-				createdAt: new Date().getTime() / 1000,
+				createdAt: parseInt((new Date().getTime() / 1000).toString(), 10),
 			},
 			{ autoGenerateObjectIDIfNotExist: true },
 		);
+
+    console.log(JSON.stringify(res))
 
 		return {
 			statusCode: 200,
 			body: JSON.stringify({
 				message: 'Data indexed successfully',
+				...res,
 			}),
 		};
 	} catch (err) {
