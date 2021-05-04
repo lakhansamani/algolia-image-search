@@ -19,7 +19,7 @@ test('should search lazy_fox.png', async () => {
 	)[0];
 
 	// fire search event
-	fireEvent.change(inputElement, { target: { value: 'lazy_fox.png' } });
+	fireEvent.change(inputElement, { target: { value: 'ethereum' } });
 	// add delay for response to be there
 	await new Promise((r) => setTimeout(r, 2000));
 	// get result items

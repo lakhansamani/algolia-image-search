@@ -37,13 +37,9 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 
 		try {
 			const worker = Tesseract.createWorker({
-				// logger: function (m) {
-				// 	console.log(m);
-				// },
-				/*
-				 * As there is no indexedDB in earlier version
-				 * of Edge, here we disable cache.
-				 */
+				logger: (m) => {
+					console.log(m);
+				},
 				cacheMethod: 'none',
 			});
 			await worker.load();

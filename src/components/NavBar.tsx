@@ -6,7 +6,7 @@ import FileTypeFilter from './FileTypeFilter';
 const NavBar: React.FC = () => {
 	return (
 		<>
-			<div className="flex justify-between w-full px-3 py-5 fixed z-50 items-center flex-wrap bg-blue-500">
+			<div className="flex justify-between w-full px-3 py-5	 fixed z-50 items-center flex-wrap bg-blue-500">
 				<div className="w-full py-3 lg:py-0 lg:w-auto">
 					<a
 						href="/"
@@ -16,7 +16,7 @@ const NavBar: React.FC = () => {
 							<Logo height={25} width={25} />
 						</span>
 						<span className="ml-2 text-white">
-							<span className="font-light">Image</span>Search
+							<span className="font-extralight">Image</span>Search
 						</span>
 					</a>
 				</div>
