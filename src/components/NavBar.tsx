@@ -7,7 +7,7 @@ const NavBar: React.FC = () => {
 	return (
 		<>
 			<div className="flex justify-between w-full px-3 py-5	 fixed z-50 items-center flex-wrap bg-blue-500">
-				<div className="w-full py-3 lg:py-0 lg:w-auto">
+				<div className="w-full pb-5 lg:py-0 lg:w-auto">
 					<a
 						href="/"
 						className="text-2xl lg:text-xl cursor-pointer font-bold flex items-center text-gray-900 justify-center"
