@@ -153,6 +153,7 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 															className="h-full w-full opacity-0"
 															name="file input"
 															accept="image/*"
+															disabled={loading}
 															onChange={(e) => {
 																if (e.target.files && e.target.files.length) {
 																	setFile(e.target.files[0]);
