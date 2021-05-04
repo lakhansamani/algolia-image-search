@@ -77,17 +77,19 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 			}
 
 			addToast(json.message, {
-				appearance: 'info',
+				appearance: 'success',
 				autoDismiss: true,
 			});
-			handleClose();
+			setTimeout(() => {
+				handleClose();
 
-			if (onSubmit) {
-				onSubmit();
-			}
+				if (onSubmit) {
+					onSubmit();
+				}
+			}, 3000);
 		} catch (err) {
 			handleClose();
-			addToast(`Something went wrong please try again.\n err.message`, {
+			addToast(`Something went wrong please try again.`, {
 				appearance: 'error',
 				autoDismiss: true,
 			});
