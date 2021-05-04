@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	background: rgb(245, 245, 245);
+}
+
 .ais-Hits-list,
 .ais-InfiniteHits-list,
 .ais-InfiniteResults-list,

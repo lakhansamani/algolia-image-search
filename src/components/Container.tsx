@@ -39,7 +39,7 @@ const Container: React.FC = () => {
 					refresh={shouldRefresh}
 				>
 					<NavBar />
-					<div className="flex justify-center mt-36 lg:mt-24 flex-col items-center">
+					<div className="flex justify-center mt-40 lg:mt-28 flex-col items-center">
 						<div className="flex">
 							<CurrentRefinements clearsQuery />
 							<Stats />

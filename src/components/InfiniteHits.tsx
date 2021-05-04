@@ -43,11 +43,11 @@ const InfiniteHits: React.FC<{
 					hits.map((hit) => <ResultItem hit={hit} key={hit.objectID} />)
 				) : (
 					<h1 className="text-center text-2xl font-bold text-gray-600">
-						:( No Results found
+						Sorry! No Results found
 					</h1>
 				)}
 				{hasMore && (
-					<div className="flex justify-center">
+					<div className="flex justify-center mt-5">
 						<button
 							disabled={!hasMore}
 							onClick={refineNext}

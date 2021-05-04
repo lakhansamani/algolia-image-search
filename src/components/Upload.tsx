@@ -101,7 +101,7 @@ const Upload: React.FC<{ onSubmit?: () => void }> = ({ onSubmit }) => {
 	return (
 		<>
 			<button
-				className="fixed bottom-2 right-2 rounded-full bg-green-500 p-5 flex items-center hover:bg-green-400 hover:shadow-sm text-white uppercase font-bold lg:rounded"
+				className="fixed bottom-2 right-2 rounded-full bg-blue-500 p-5 flex items-center hover:bg-blue-400 hover:shadow-sm text-white uppercase font-bold lg:rounded-full"
 				type="button"
 				onClick={() => setShowModal(true)}
 			>

@@ -6,16 +6,16 @@ import FileTypeFilter from './FileTypeFilter';
 const NavBar: React.FC = () => {
 	return (
 		<>
-			<div className="flex justify-between w-full p-3 fixed bg-blue-500 z-50 shadow-md items-center flex-wrap">
+			<div className="flex justify-between w-full px-3 py-5 fixed z-50 items-center flex-wrap bg-blue-500">
 				<div className="w-full py-3 lg:py-0 lg:w-auto">
 					<a
 						href="/"
-						className="text-lg cursor-pointer font-bold flex items-center text-white justify-center"
+						className="text-2xl lg:text-xl cursor-pointer font-bold flex items-center text-gray-900 justify-center"
 					>
-						<span className="-mt-1">
+						<span className="-mt-1 text-white">
 							<Logo height={25} width={25} />
 						</span>
-						<span className="ml-2">
+						<span className="ml-2 text-white">
 							<span className="font-light">Image</span>Search
 						</span>
 					</a>
