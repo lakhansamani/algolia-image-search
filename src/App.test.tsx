@@ -5,7 +5,7 @@ import App from './App';
 
 jest.setTimeout(30000);
 
-test('should search lazy_fox.png', async () => {
+test('should search ethereum keyword', async () => {
 	const { container } = render(<App />);
 	// add delay for response to be there
 	await new Promise((r) => setTimeout(r, 5000));
