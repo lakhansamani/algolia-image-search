@@ -1,6 +1,6 @@
 {
-	"short_name": "Algolia image / pdf search",
-	"name": "Algolia Image / PDF search",
+	"short_name": "Algolia image search",
+	"name": "Algolia Image search",
 	"icons": [
 		{
 			"src": "favicon.ico",
