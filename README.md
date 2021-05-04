@@ -12,7 +12,7 @@ A web application that lets you search on the images with text. It performs OCR 
 # Architecture
 ![architecture](https://raw.githubusercontent.com/lakhansamani/algolia-image-search/main/doc/architecture.png)
 
-# Tools and Technologies Uses
+# Tools and Technologies Used
 
 * [React](https://reactjs.org/) for building user interface
 * [Create React App](https://github.com/facebook/create-react-app) for bootstrapping the React project
