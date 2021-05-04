@@ -7,9 +7,9 @@ A web application that lets you search on the images with text. It performs OCR 
 * A user should be able to upload the images.
 * A user should be able to search & filter the content for the uploaded images
 
-# [Live Demo](https://algolia-image-search.netlify.app/)
-
-# [Quick Video Explaining the application](https://www.loom.com/share/1e2dc67b7ed341ff9d3956928db7ac4e)
+# Demo
+* [Live Website](https://algolia-image-search.netlify.app/)
+* [Quick Video Explaining the Application](https://www.loom.com/share/1e2dc67b7ed341ff9d3956928db7ac4e)
 
 # Architecture
 ![architecture](https://raw.githubusercontent.com/lakhansamani/algolia-image-search/main/doc/architecture.png)
