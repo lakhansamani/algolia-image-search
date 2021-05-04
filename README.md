@@ -1,6 +1,6 @@
 # Algolia Image Search
 
-A web application that lets you search on the images with text. It performs OCR on the uploaded images and enables the search on their content with the help of Algolia.
+A web application that lets you search on the images with text. It performs [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition) on the uploaded images and enables the search on their content with the help of Algolia.
 
 ### Use Cases
 
