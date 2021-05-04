@@ -8,6 +8,7 @@ import {
 import InfiniteHits from './InfiniteHits';
 import NavBar from './NavBar';
 import LoadingIndicator from './LoadingIndicator';
+import Upload from './Upload';
 
 const searchClient = algoliasearch(
 	'59NBO13TUB',
@@ -37,8 +38,8 @@ const Container: React.FC = () => {
 					searchClient={searchClient}
 					refresh={shouldRefresh}
 				>
-					<NavBar setShouldRefresh={setShouldRefresh} />
-					<div className="flex justify-center mt-24 flex-col items-center">
+					<NavBar />
+					<div className="flex justify-center mt-36 lg:mt-24 flex-col items-center">
 						<div className="flex">
 							<CurrentRefinements clearsQuery />
 							<Stats />
@@ -50,6 +51,7 @@ const Container: React.FC = () => {
 						</LoadingIndicator>
 					</div>
 				</InstantSearch>
+				<Upload onSubmit={() => setShouldRefresh(true)} />
 			</div>
 		</>
 	);
